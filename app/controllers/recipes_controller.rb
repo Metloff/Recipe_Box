@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :find_recipe, except: [:index, :new, :create]
 
   def index
-    @recipes = Recipe.order('created_at DESC')
+    @recipes = Recipe.all.order('created_at DESC')
   end
 
   def show
@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description)
+    params.require(:recipe).permit(:title, :description, :image)
   end
 
   def find_recipe
